@@ -75,12 +75,14 @@ app.put("/todos/:id", checksExistsUserAccount, (request, response) => {
 
   const todo = user.todos.find(todo => todo.id === id)
 
+  if(!todo){
+    return response
+      .status(404).
+
   todo.title = title;
   todo.deadline = new Date(deadline);
 
   return res.status(200).json(todo);
-
-
 });
 
 app.patch("/todos/:id/done", checksExistsUserAccount, (request, response) => {
