@@ -77,7 +77,8 @@ app.put("/todos/:id", checksExistsUserAccount, (request, response) => {
 
   if(!todo){
     return response
-      .status(404).
+      .status(404).json({error: "Mensagem do erro"});
+  }
 
   todo.title = title;
   todo.deadline = new Date(deadline);
